@@ -47,3 +47,28 @@ def new_booking(user_id, flight_id):
     finally:
       connection.close()
   return "Booking Failed!"
+
+
+def get_bookings(user_id):
+  connection = create_connection()
+  if connection:
+    try:
+      cursor = connection.cursor(dictionary=True)
+      query = """
+        SELECT DISTINCT f.id, f.flight_name, f.departure_airport, f.departure_time, f.arrival_airport, f.arrival_time, f.total_seats 
+        FROM flights_db.bookings b
+        JOIN flights_db.flights f
+        ON b.flight_id = f.id
+        WHERE b.user_id = %s
+      """
+      value = (user_id, )
+      cursor.execute(query, value)
+      results = cursor.fetchall()
+      cursor.close()
+      return results
+    except Error as e:
+            print(f"The error '{e}' occurred")
+            return []
+    finally:
+        connection.close()
+  return []

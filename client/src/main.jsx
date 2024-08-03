@@ -8,6 +8,7 @@ import NotFoundPage from "./components/NotFoundPage.jsx";
 import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 import LoggedUser from "./components/LoggedUser.jsx";
+import Bookings from "./components/Bookings.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/users/:userId",
     element: <LoggedUser />,
+  },
+  {
+    path: "/users/:userId/bookings",
+    element: <Bookings />,
   },
 ]);
 

@@ -29,6 +29,6 @@ def login_user(email, password):
     if len(results) > 0:
         return str(results[0][0])
     
-    return "User NOT found!"
+    return ""
     
 

@@ -5,7 +5,7 @@ from db.create_tables import users_table
 from db.insert_data import insert_data
 from db.get_flights import get_flights
 from db.users import create_user, login_user
-from db.bookings import new_booking
+from db.bookings import new_booking, get_bookings
 
 app = Flask(__name__)
 CORS(app)
@@ -52,6 +52,11 @@ def book_flight():
     flight_id = data.get("flight_id")
     response = new_booking(user_id, flight_id)
     return response
+
+@app.route("/bookings/<user_id>")
+def user_bookings(user_id):
+    results = get_bookings(user_id)
+    return results
 
 
 if __name__ == "__main__":
