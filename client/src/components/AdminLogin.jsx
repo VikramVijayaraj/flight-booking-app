@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Login.css";
 
@@ -59,6 +59,7 @@ export default function AdminLogin() {
         <button type="submit" className="btn btn-success">
           Login
         </button>
+        <Link to="/">Login as user</Link>
       </form>
     </>
   );

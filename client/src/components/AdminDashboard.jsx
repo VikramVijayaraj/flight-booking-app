@@ -27,11 +27,16 @@ export default function AdminDashboard() {
   return (
     <div className="dashboard">
       <h2>Dashboard</h2>
+      <div className="admin-heading">
+        <Link to="/admin/dashboard/all-bookings">
+          <button className="btn btn-outline-dark">All Bookings</button>
+        </Link>
+        <Link to="/admin/login">
+          <button className="btn btn-outline-danger">Logout</button>
+        </Link>
+      </div>
       <Link to="/admin/dashboard/add-flight">
-        <button className="btn btn-primary">+ Add Flight</button>
-      </Link>
-      <Link to="/admin/dashboard/all-bookings">
-        <button className="btn btn-outline-dark">All Bookings</button>
+        <button className="add-btn btn btn-primary">+ Add Flight</button>
       </Link>
       <ul>
         {flightsData.map((flight) => (

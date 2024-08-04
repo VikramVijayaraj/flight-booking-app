@@ -56,8 +56,8 @@ def get_bookings(user_id):
       cursor = connection.cursor(dictionary=True)
       query = """
         SELECT DISTINCT f.id, f.flight_name, f.departure_airport, f.departure_time, f.arrival_airport, f.arrival_time, f.total_seats 
-        FROM flights_db.bookings b
-        JOIN flights_db.flights f
+        FROM bookings b
+        JOIN flights f
         ON b.flight_id = f.id
         WHERE b.user_id = %s
       """
@@ -81,7 +81,7 @@ def get_all_users_bookings():
       cursor = connection.cursor(dictionary=True)
       query = """
         SELECT DISTINCT b.user_id, f.id, f.flight_name, f.departure_airport, f.departure_time, f.arrival_airport, f.arrival_time, f.total_seats
-        FROM flights_db.bookings b JOIN flights_db.flights f
+        FROM bookings b JOIN flights f
         ON b.flight_id = f.id
       """
       cursor.execute(query)

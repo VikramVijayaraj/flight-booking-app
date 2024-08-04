@@ -2,10 +2,16 @@ body {
   margin: 0;
 }
 
+.admin-heading {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 400px;
+}
+
 .dashboard h2 {
   margin: 20px 400px;
 }
 
-.dashboard button {
+.add-btn {
   margin: 20px 400px;
 }
