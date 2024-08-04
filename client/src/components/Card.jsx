@@ -42,6 +42,7 @@ export default function Card({ flight, action }) {
             <p>{flight.total_seats} seat(s) available</p>
           )}
           {currentPath === "bookings" ||
+          currentPath === "all-bookings" ||
           currentPath === "dashboard" ? undefined : flight.total_seats === 0 ? (
             <button
               onClick={handleBooking}

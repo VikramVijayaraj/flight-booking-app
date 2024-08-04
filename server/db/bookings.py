@@ -72,3 +72,25 @@ def get_bookings(user_id):
     finally:
         connection.close()
   return []
+
+
+def get_all_users_bookings():
+  connection = create_connection()
+  if connection:
+    try:
+      cursor = connection.cursor(dictionary=True)
+      query = """
+        SELECT DISTINCT b.user_id, f.id, f.flight_name, f.departure_airport, f.departure_time, f.arrival_airport, f.arrival_time, f.total_seats
+        FROM flights_db.bookings b JOIN flights_db.flights f
+        ON b.flight_id = f.id
+      """
+      cursor.execute(query)
+      results = cursor.fetchall()
+      cursor.close()
+      return results
+    except Error as e:
+            print(f"The error '{e}' occurred")
+            return []
+    finally:
+        connection.close()
+  return []

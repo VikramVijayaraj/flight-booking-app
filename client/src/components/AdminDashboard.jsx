@@ -30,6 +30,9 @@ export default function AdminDashboard() {
       <Link to="/admin/dashboard/add-flight">
         <button className="btn btn-primary">+ Add Flight</button>
       </Link>
+      <Link to="/admin/dashboard/all-bookings">
+        <button className="btn btn-outline-dark">All Bookings</button>
+      </Link>
       <ul>
         {flightsData.map((flight) => (
           <li key={flight.id}>

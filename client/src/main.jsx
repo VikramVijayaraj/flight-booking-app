@@ -42,6 +42,10 @@ const router = createBrowserRouter([
     path: "/admin/dashboard/add-flight",
     element: <AddFlight />,
   },
+  {
+    path: "/admin/dashboard/all-bookings",
+    element: <Bookings />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

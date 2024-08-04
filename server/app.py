@@ -4,7 +4,7 @@ from flask_cors import CORS
 from db.create_tables import bookings_table
 from db.flights import get_flights, add_flight, remove_flight
 from db.users import create_user, login_user
-from db.bookings import new_booking, get_bookings
+from db.bookings import new_booking, get_bookings, get_all_users_bookings
 
 app = Flask(__name__)
 CORS(app)
@@ -55,10 +55,10 @@ def delete_flight(flight_id):
     response = remove_flight(flight_id)
     return response
 
-# @app.route("/test")
-# def test():
-#     # bookings_table()
-#     return ""
+@app.route("/all-bookings")
+def all_users_bookings():
+    response = get_all_users_bookings()
+    return response
 
 
 if __name__ == "__main__":
