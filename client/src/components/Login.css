@@ -1,3 +1,8 @@
 body {
-  /* width: 400px; */
+  margin: 200px 500px;
+}
+
+button {
+  margin-bottom: 10px;
+  margin-right: 20px;
 }

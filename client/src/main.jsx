@@ -2,13 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App.jsx";
 import "./index.css";
 import NotFoundPage from "./components/NotFoundPage.jsx";
 import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 import LoggedUser from "./components/LoggedUser.jsx";
 import Bookings from "./components/Bookings.jsx";
+import AdminLogin from "./components/AdminLogin.jsx";
+import AdminDashboard from "./components/AdminDashboard.jsx";
+import AddFlight from "./components/AddFlight.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,18 @@ const router = createBrowserRouter([
   {
     path: "/users/:userId/bookings",
     element: <Bookings />,
+  },
+  {
+    path: "/admin/login",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/admin/dashboard",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/admin/dashboard/add-flight",
+    element: <AddFlight />,
   },
 ]);
 

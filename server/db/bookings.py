@@ -1,7 +1,7 @@
 from mysql.connector import Error
 
 from db.db_connection import create_connection
-from db.get_flights import get_flights
+from db.flights import get_flights
 
 def update_seats(flight_id):
   connection = create_connection()

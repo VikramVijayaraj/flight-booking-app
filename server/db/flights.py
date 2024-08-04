@@ -24,3 +24,13 @@ def get_flights(flight_id=None):
         finally:
             connection.close()
     return []
+
+
+def add_flight(data):
+    flight_name = data.get("flight_name")
+    arrival_time = data.get("arrival_time")
+    departure_time = data.get("departure_time")
+    arrival_airport = data.get("arrival_airport")
+    departure_airport = data.get("departure_airport")
+    total_seats = data.get("total_seats")
+    return

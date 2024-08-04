@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import "./Card.css";
@@ -35,7 +34,7 @@ export default function Card({ flight, bookFlight }) {
           {currentPath === "bookings" ? undefined : (
             <p>{flight.total_seats} seat(s) available</p>
           )}
-          {currentPath === "bookings" ? undefined : flight.total_seats === 0 ? (
+          {currentPath === "bookings" || currentPath === "dashboard" ? undefined : flight.total_seats === 0 ? (
             <button
               onClick={handleBooking}
               className="btn btn-primary disabled"

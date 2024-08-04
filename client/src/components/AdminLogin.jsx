@@ -1,19 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
 import { useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-  const API_URL = import.meta.env.VITE_API_URL;
-  const [creds, setCreds] = useState({
-    email: "",
-    password: "",
-  });
+export default function AdminLogin() {
   const navigate = useNavigate();
+  const [adminCreds, setAdminCreds] = useState({
+    email: "admin@company.com",
+    password: "admin",
+  });
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setCreds((prevValues) => {
+    setAdminCreds((prevValues) => {
       return {
         ...prevValues,
         [name]: value,
@@ -21,19 +18,14 @@ export default function Login() {
     });
   }
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
 
-    if (creds.email && creds.password) {
-      try {
-        const response = await axios.post(API_URL + "/login", creds);
-        let userId = response.data;
-        if (userId) {
-          navigate(`/users/${userId}`);
-        }
-      } catch (err) {
-        console.log(err);
-      }
+    if (
+      adminCreds.email === "admin@company.com" &&
+      adminCreds.password === "admin"
+    ) {
+      navigate("/admin/dashboard");
     }
   }
 
@@ -47,7 +39,7 @@ export default function Login() {
             className="form-control"
             name="email"
             placeholder="name@example.com"
-            value={creds.email}
+            value={adminCreds.email}
           />
           <label htmlFor="email">Email address</label>
         </div>
@@ -58,18 +50,14 @@ export default function Login() {
             className="form-control"
             name="password"
             placeholder="Password"
-            value={creds.password}
+            value={adminCreds.password}
           />
           <label htmlFor="password">Password</label>
         </div>
         <button type="submit" className="btn btn-success">
           Login
         </button>
-        <Link to="/signup">Create a new account</Link>
       </form>
-      <div>
-        <Link to="/admin/login">Login as Admin</Link>
-      </div>
     </>
   );
 }
