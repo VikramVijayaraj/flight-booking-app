@@ -7,7 +7,7 @@ from db.users import create_user, login_user
 from db.bookings import new_booking, get_bookings, get_all_users_bookings
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route("/create-tables")
@@ -69,4 +69,4 @@ def all_users_bookings():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
