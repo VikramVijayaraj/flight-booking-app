@@ -2,9 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 
 import "./AddFlight.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AddFlight() {
   const API_URL = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
   const [flightData, setFlightData] = useState({
     flight_name: "",
     arrival_date: "",
@@ -42,6 +44,7 @@ export default function AddFlight() {
     try {
       await axios.post(`${API_URL}/add-flight`, newFlight);
       alert("Flight added successfully");
+      navigate("/admin/dashboard");
     } catch (error) {
       console.error("Error adding flight:", error);
     }

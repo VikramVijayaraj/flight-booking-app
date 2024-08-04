@@ -40,7 +40,7 @@ export default function LoggedUser() {
       <ul>
         {flightsData.map((flight) => (
           <li key={flight.id}>
-            <Card flight={flight} bookFlight={bookFlight} />
+            <Card flight={flight} action={bookFlight} />
           </li>
         ))}
       </ul>

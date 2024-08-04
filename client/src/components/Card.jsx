@@ -2,18 +2,25 @@ import { useLocation } from "react-router-dom";
 
 import "./Card.css";
 
-export default function Card({ flight, bookFlight }) {
+export default function Card({ flight, action }) {
   const location = useLocation();
   const currentPath = location.pathname.split("/").at(-1);
 
   function handleBooking() {
-    bookFlight(flight.id);
+    action(flight.id);
+  }
+
+  function handleDelete() {
+    action(flight.id);
   }
 
   return (
     <div>
       <div className="card">
-        <h5 className="card-header">{flight.flight_name}</h5>
+        <div className="header card-header">
+          <h5>{flight.flight_name}</h5>
+          {currentPath === "dashboard" && <p onClick={handleDelete}>Delete</p>}
+        </div>
         <div className="card-body">
           <div className="split">
             <div>
@@ -34,7 +41,8 @@ export default function Card({ flight, bookFlight }) {
           {currentPath === "bookings" ? undefined : (
             <p>{flight.total_seats} seat(s) available</p>
           )}
-          {currentPath === "bookings" || currentPath === "dashboard" ? undefined : flight.total_seats === 0 ? (
+          {currentPath === "bookings" ||
+          currentPath === "dashboard" ? undefined : flight.total_seats === 0 ? (
             <button
               onClick={handleBooking}
               className="btn btn-primary disabled"

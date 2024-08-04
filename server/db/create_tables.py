@@ -56,7 +56,7 @@ def bookings_table():
                     user_id INT NOT NULL,
                     flight_id INT NOT NULL,
                     FOREIGN KEY (user_id) REFERENCES users(id),
-                    FOREIGN KEY (flight_id) REFERENCES flights(id)
+                    FOREIGN KEY (flight_id) REFERENCES flights(id) ON DELETE CASCADE
                 )
             """
             cursor = connection.cursor()

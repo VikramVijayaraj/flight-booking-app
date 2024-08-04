@@ -18,6 +18,12 @@ export default function AdminDashboard() {
     fetchAllFlights();
   }, []);
 
+  async function deleteFlight(flight_id) {
+    const res = await axios.get(`${API_URL}/remove-flight/${flight_id}`);
+    console.log(res);
+    await fetchAllFlights();
+  }
+
   return (
     <div className="dashboard">
       <h2>Dashboard</h2>
@@ -27,7 +33,7 @@ export default function AdminDashboard() {
       <ul>
         {flightsData.map((flight) => (
           <li key={flight.id}>
-            <Card flight={flight} />
+            <Card flight={flight} action={deleteFlight} />
           </li>
         ))}
       </ul>

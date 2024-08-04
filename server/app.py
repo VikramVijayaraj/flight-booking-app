@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from db.flights import get_flights, add_flight
+from db.create_tables import bookings_table
+from db.flights import get_flights, add_flight, remove_flight
 from db.users import create_user, login_user
 from db.bookings import new_booking, get_bookings
 
@@ -46,8 +47,19 @@ def user_bookings(user_id):
 @app.route("/add-flight", methods=["POST"])
 def new_flight():
     data = request.get_json()
-    add_flight(data)
-    return data
+    response = add_flight(data)
+    return response
+
+@app.route("/remove-flight/<flight_id>")
+def delete_flight(flight_id):
+    response = remove_flight(flight_id)
+    return response
+
+# @app.route("/test")
+# def test():
+#     # bookings_table()
+#     return ""
+
 
 if __name__ == "__main__":
     app.run(debug=True)
