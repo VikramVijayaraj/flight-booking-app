@@ -29,6 +29,7 @@ export default function LoggedUser() {
     };
     const response = await axios.post(API_URL + "/book-flight", data);
     const newData = response.data[0];
+    alert("Flight booked!");
     const updatedFlights = flightsData.map((flight) =>
       flight.id === newData.id
         ? { ...flight, total_seats: newData.total_seats }

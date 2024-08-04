@@ -34,8 +34,8 @@ export default function Bookings() {
       </h2>
       {bookings.length > 0 ? (
         <ul>
-          {bookings.map((booking) => (
-            <li key={booking.id}>
+          {bookings.map((booking, index) => (
+            <li key={index}>
               <Card flight={booking} />
             </li>
           ))}

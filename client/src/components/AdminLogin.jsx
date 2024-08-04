@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "./Login.css";
+
 export default function AdminLogin() {
   const navigate = useNavigate();
   const [adminCreds, setAdminCreds] = useState({
@@ -31,7 +33,7 @@ export default function AdminLogin() {
 
   return (
     <>
-      <form method="POST" onSubmit={handleSubmit}>
+      <form className="login-form" method="POST" onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
           <input
             onChange={handleChange}

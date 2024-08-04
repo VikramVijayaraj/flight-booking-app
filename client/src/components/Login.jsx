@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
 import { useState } from "react";
 import axios from "axios";
+
+import "./Login.css";
 
 export default function Login() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -39,7 +40,7 @@ export default function Login() {
 
   return (
     <>
-      <form method="POST" onSubmit={handleSubmit}>
+      <form className="login-form" method="POST" onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
           <input
             onChange={handleChange}
@@ -66,10 +67,10 @@ export default function Login() {
           Login
         </button>
         <Link to="/signup">Create a new account</Link>
+        <div>
+          <Link to="/admin/login">Login as Admin</Link>
+        </div>
       </form>
-      <div>
-        <Link to="/admin/login">Login as Admin</Link>
-      </div>
     </>
   );
 }

@@ -19,8 +19,8 @@ export default function AdminDashboard() {
   }, []);
 
   async function deleteFlight(flight_id) {
-    const res = await axios.get(`${API_URL}/remove-flight/${flight_id}`);
-    console.log(res);
+    await axios.get(`${API_URL}/remove-flight/${flight_id}`);
+    alert("Flight deleted!");
     await fetchAllFlights();
   }
 
