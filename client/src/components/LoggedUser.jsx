@@ -14,7 +14,6 @@ export default function LoggedUser() {
 
   async function fetchAllFlights() {
     const response = await axios.get(API_URL + "/get-all-flights");
-    console.log(response.data);
     setOriginalData(response.data);
     setFlightsData(response.data);
   }
